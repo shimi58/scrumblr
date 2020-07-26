@@ -1,0 +1,9 @@
+[Unit]
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/root/docker_data/scrumblrInit
+
+[Install]
+WantedBy=multi-user.target

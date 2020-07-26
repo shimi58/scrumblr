@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# redisのインストール
+cd /root
+wget http://download.redis.io/releases/redis-5.0.0.tar.gz
+tar xzf redis-5.0.0.tar.gz
+
+cd /root/redis-5.0.0
+make distclean
+make
+make install
+
+# radis起動
+redis-server &
+
+# nodeインストール
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+
+yum -y install nodejs
+
+# Scrumblr構築
+cd /root
+git clone https://github.com/shimi58/scrumblr
+cd /root/scrumblr
+
+npm install
+
+# Scrumblr起動
+node server.js --port 80
